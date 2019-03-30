@@ -7,7 +7,7 @@ app = Flask(__name__)
 
 @app.route('/api/data_by_categories', methods = ['GET'])
 def data_by_categories():
-    data = pd.read_csv('Data Preprocessing and Modelling/data_by_categories.csv')
+    data = pd.read_csv('data_by_categories.csv')
     categories = data['Categories'].tolist()
     views = data['Views'].tolist()
     likes = data['Likes'].tolist()
@@ -54,7 +54,7 @@ def bestPublishTime():
 
 @app.route('/api/hot_titles', methods=['GET'])
 def hotTitles():
-    data = pd.read_csv('Data Preprocessing and Modelling/hottitles.csv')
+    data = pd.read_csv('hottitles.csv')
     category_list = data.columns.values.tolist()
     hot_titles = {}
     for category in category_list:
@@ -63,5 +63,5 @@ def hotTitles():
     return jsonify(hot_titles)
 
 if __name__ == '__main__':
-    df = pd.read_csv('Data Preprocessing and Modelling/cleaned_stats.csv')
+    df = pd.read_csv('cleaned_stats.csv')
     app.run(debug=True)
